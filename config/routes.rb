@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  root "users#index"
-  
-  get "signup" => "users#new", :as => "signup"
+  root "welcome#index"
 
-  resources :users
+  # Match User and Session Routes
+  get 'signup' => 'users#new', :as => 'signup'
+  post 'create_user' => 'users#create', :as => 'create_user'
+  
+  get 'login' => 'sessions#login', :as => 'login'
+  post 'login_query' => "sessions#login_query", :as => 'login_query'
+  get 'logout' => 'sessions#logout', :as => 'logout'
+  
+  get 'home' => 'sessions#home', :as => 'home'
+  get 'profile' => 'sessions#profile', :as => 'profile'
+  get 'settings' => 'sessions#settings', :as => 'settings'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

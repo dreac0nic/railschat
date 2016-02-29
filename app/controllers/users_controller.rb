@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :redirect_on_authenticated, :only => [:new, :create]
+  
   def new
     @user = User.new
   end

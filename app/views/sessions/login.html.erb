@@ -1,0 +1,15 @@
+<% @page_tite = "Login -- ALSO A DUMB NAME" %>
+
+<div class="login_form">
+  <h1>User Login</h1>
+
+  <%= form_tag(:action => 'login_query') do %>
+  <h2><%= label_tag :name %></h2>
+  <p><%= text_field_tag :name %></p>
+
+  <h2><%= label_tag :password %></h2>
+  <p><%= password_field_tag :password %></p>
+
+  <%= submit_tag "Login" %>
+  <% end %>
+</div>
