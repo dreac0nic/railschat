@@ -4,11 +4,15 @@
   
   <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |form| %>
   <h2><%= form.label :handle %></h2>
+  <p><%= form.text_field :handle %></p>
   <h2><%= form.label :email %></h2>
+  <p><%= form.text_field :email %></p>
   <h2><%= form.label :password %></h2>
+  <p><%= form.password_field :password %></p>
   <h2><%= form.label :password_confirmation %></h2>
+  <p><%= form.password_field :password_confirmation %></p>
 
-  <% form.submit :Create %>
+  <%= form.submit "Create" %>
   <% end %>
 
   <% if @user.errors.any? %>
