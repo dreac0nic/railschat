@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'profile' => 'sessions#profile', :as => 'profile'
   get 'settings' => 'sessions#settings', :as => 'settings'
 
+  # Generic Resources
+  resources :rooms
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
