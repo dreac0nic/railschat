@@ -1,2 +1,25 @@
-<h1>Rooms#new</h1>
-<p>Find me in app/views/rooms/new.html.erb</p>
+<% @page_title = "New Room -- STUPID NAME FIX PLEASE" %>
+<div class="room_creation_form">
+  <h1>Create New Room!</h1>
+  
+  <%= form_for(:room, :url => {:controller => 'rooms', :action => 'create'}) do |form| %>
+  <h2><%= form.label :topic %></h2>
+  <p><%= form.text_field :topic %></p>
+  <p><%= form.label :unlisted %> <%= form.check_box :unlisted %></p>
+  <p><%= form.label :chat_public %> <%= form.check_box :chat_public %></p>
+  <h2><%= form.label :password %></h2>
+  <p><%= form.password_field :password %></p>
+  <h2><%= form.label :password_confirmation %></h2>
+  <p><%= form.password_field :password_confirmation %></p>
+
+  <%= form.submit "Create" %>
+  <% end %>
+
+  <% if @room.errors.any? %>
+  <ul class="room_errors">
+    <% for error_message in @room.errors.full_messages %>
+    <li><%= error_message %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</div>

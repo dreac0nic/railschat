@@ -15,6 +15,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new room_params
+    @room.user_id = @current_user.id
 
     if @room.save
       redirect_to @room, :notice => "Room created successfully!"
@@ -43,6 +44,6 @@ class RoomsController < ApplicationController
   private
 
   def room_params
-    params.require(:room).permit(:topic, :password, :unlisted, :chat_public)
+    params.require(:room).permit(:topic, :password, :password_confirmation, :unlisted, :chat_public)
   end
 end
