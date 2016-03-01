@@ -10,7 +10,8 @@ class SessionsController < ApplicationController
 
     if(authorized_user)
       session[:user_id] = authorized_user.id
-      redirect_to :action => 'home', :notice => "Welcome back, #{authorized_user.handle}!"
+      flash[:notice] = "Welcome back, #{authorized_user.handle}!"
+      redirect_to :action => 'home'
     else
       flash[:notice] = "Invalid username or password!"
       render "login"
