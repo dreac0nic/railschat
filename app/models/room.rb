@@ -1,5 +1,6 @@
 class Room < ActiveRecord::Base
   belongs_to :user
+  has_many :users, through: :passports
   has_many :messages
   
   attr_accessor :password
