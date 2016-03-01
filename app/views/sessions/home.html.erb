@@ -1,2 +1,12 @@
-<h1>Sessions#home</h1>
-<p>Find me in app/views/sessions/home.html.erb</p>
+<h1>Welcome, <%= @current_user.handle %>!</h1>
+<p>There isn't much here, but you can navigate to your rooms below for find more <%= link_to "here", rooms_path %>!</p>
+
+<% if @current_user.rooms.count > 0 %>
+<ul>
+  <% @current_user.rooms.each do |room| %>
+  <li><%= link_to room.topic, room %></li>
+  <% end %>
+</ul>
+<% else %>
+<p>Doesn't look like you've joined any rooms yet, check out the listing <%= link_to "here", rooms_path %>!</p>
+<% end %>

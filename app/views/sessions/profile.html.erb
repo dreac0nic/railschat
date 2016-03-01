@@ -1,2 +1,4 @@
-<h1>Sessions#profile</h1>
-<p>Find me in app/views/sessions/profile.html.erb</p>
+<h1><%= @current_user.handle %></h1>
+<% days = (@current_user.created_at.to_datetime - Date.today).to_i %>
+<p>User for <%= days %> day<%= "s" if days != 1 %>!</p>
+<img src=<%= @current_user.avatar_url %> />

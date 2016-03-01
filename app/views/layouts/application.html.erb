@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Chatroom</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Chatroom</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div id="user_controls">
+      <% if user_logged_in? %>
+      <span style="font-weight: bold;"><%= current_user.handle %></span> <%= link_to "home", controller: "sessions", action: "home" %> | <%= link_to "profile", controller: "sessions", action: "profile" %> | <%= link_to "settings", controller: "sessions", action: "settings" %> | <%= link_to "logout", controller: "sessions", action: "logout" %>
+      <% else %>
+      <%= link_to "login", controller: "sessions", action: "login" %> | <%= link_to "signup", controller: "users", action: "new" %>
+      <% end %>
+    </div>
 
-<%= yield %>
+    <%= yield %>
 
-</body>
+  </body>
 </html>

@@ -1,2 +1,8 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Welcome to RailsChat!</h1>
+<p>
+  Railschat is a simple Ruby on Rails-based chatting application bring the classic chatting experience of IRC to your browser!
+</p>
+
+<p>
+  To get started, be sure to <%= link_to "login", controller: "sessions", action: "login" %> to your account or <%= link_to "create", controller: "users", action: "new" %> a new account! Once you're ready, you can join the fun over at the <%= link_to "room listing", rooms_path %>!
+</p>
