@@ -5,7 +5,7 @@
 <ul>
   <% @rooms.each do |room| %>
   <% if not room.unlisted %>
-  <li><%= link_to room.topic, room %> -- <%= room.user.handle %></li>
+  <li><%= link_to room.topic, room %> -- <%= room.owner.handle %></li>
   <% end %>
   <% end %>
 </ul>

@@ -1,7 +1,7 @@
 <% @page_title = "Room: " + @room.topic %>
 
 <h1><%= @room.topic %></h1>
-<p>Owner: <%= @room.user.handle %></p>
+<p>Owner: <%= @room.owner.handle %></p>
 
 <% if @room.chat_public %>
 <% if @room.messages.count > 0 %>
