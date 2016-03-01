@@ -23,4 +23,13 @@ class ApplicationController < ActionController::Base
       return true
     end
   end
+
+  def user_logged_in?
+    if session[:user_id]
+      @current_user = User.find session[:user_id]
+      return true
+    else
+      return false
+    end
+  end
 end

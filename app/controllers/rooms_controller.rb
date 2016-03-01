@@ -7,6 +7,12 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find_by_id(params[:id])
+    @message = Message.new
+    @message.room_id = @room.id
+
+    if session[:user_id]
+      @current_user = User.find session[:user_id]
+    end
   end
 
   def new
