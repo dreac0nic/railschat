@@ -6,10 +6,11 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = Room.find_by_id(params[:id])
+    @room = Room.find(params[:id])
     @message = Message.new
     @message.room_id = @room.id
 
+    # XXX: Dirty implementation, should change filter
     if session[:user_id]
       @current_user = User.find session[:user_id]
     end
@@ -24,7 +25,8 @@ class RoomsController < ApplicationController
     @room.user_id = @current_user.id
 
     if @room.save
-      redirect_to @room, :notice => "Room created successfully!"
+      flash[:notice] = "Room created successfully!"
+      redirect_to @room
     else
       flash[:notice] = "Problem creating room!"
 
@@ -41,7 +43,7 @@ class RoomsController < ApplicationController
   end
 
   def delete
-    @room = Room.find_by_id(params[:id])
+    @room = Room.find(params[:id])
   end
 
   def destroy

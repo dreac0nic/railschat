@@ -3,7 +3,7 @@
 <h1><%= @room.topic %></h1>
 <p>Owner: <%= @room.owner.handle %></p>
 
-<% if @room.chat_public %>
+<% if @room.chat_public or @room.users.include? @current_user %>
 <% if @room.messages.count > 0 %>
 <% @room.messages.each do |message| %>
 <p<span class="message_handle"><%= message.user.handle %></span>: <%= message.content %></p>
@@ -16,10 +16,19 @@
 <% end %>
 
 <% if not @current_user.nil? %>
+<% if @room.users.include? @current_user %>
 <div id="message_post_form">
   <%= form_for :message, :url => { :controller => 'messages', :action => 'create' } do |form| %>
   <%= form.hidden_field :room_id, :value => @room.id %>
   <p><%= form.text_field :content %> <%= form.submit "Post" %></p>
   <% end %>
 </div>
+<% else %>
+<div id="join_room_form">
+  <%= form_for :passport, :url => { :controller => 'passports', :action => 'create' } do |form| %>
+  <%= form.hidden_field :room_id, :value => @room.id %>
+  <%= form.submit "Join Room!" %>
+  <% end %>
+</div>
+<% end %>
 <% end %>
